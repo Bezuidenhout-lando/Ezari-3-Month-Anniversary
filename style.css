@@ -1,0 +1,959 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff8f8;
+    color: #4a3035;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 40%, #fff, transparent 35%),
+        linear-gradient(135deg, #fff8f8, #fcebed, #fffafa);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    animation: fadeUp 1.8s ease;
+}
+
+.small-text {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: #9b7078;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 12vw, 7rem);
+    font-weight: 500;
+    letter-spacing: 10px;
+    color: #70464e;
+    text-shadow: 0 5px 25px rgba(150, 90, 105, 0.15);
+    margin-bottom: 20px;
+}
+
+.date {
+    font-size: 1.3rem;
+    letter-spacing: 5px;
+    color: #9a6b73;
+    margin-bottom: 15px;
+}
+
+.intro-line {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #876169;
+    margin-bottom: 35px;
+}
+
+button {
+    border: 1px solid #c9959d;
+    background: rgba(255, 255, 255, 0.65);
+    color: #70464e;
+    padding: 15px 34px;
+    border-radius: 40px;
+    font-family: inherit;
+    font-size: 1.15rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(120, 70, 80, 0.12);
+    transition: all 0.35s ease;
+}
+
+button:hover {
+    background: #f3d9dd;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(120, 70, 80, 0.2);
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #b17b84;
+    animation: bounce 2s infinite;
+}
+
+/* =========================
+   GLOW
+========================= */
+
+.hero-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: rgba(255, 190, 205, 0.18);
+    filter: blur(70px);
+    animation: glow 5s ease-in-out infinite alternate;
+}
+
+/* =========================
+   STORY
+========================= */
+
+.section {
+    min-height: 100vh;
+    padding: 110px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.story-section {
+    background: linear-gradient(#fffafa, #fff3f5);
+}
+
+.section-label {
+    color: #b17b84;
+    letter-spacing: 5px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 500;
+    color: #613d45;
+    margin-bottom: 45px;
+}
+
+.story-card {
+    max-width: 750px;
+    padding: 45px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(190, 140, 150, 0.2);
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(100, 55, 65, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+.story-card p {
+    font-size: 1.35rem;
+    line-height: 1.8;
+    color: #6f5359;
+    margin-bottom: 22px;
+}
+
+.story-card p:last-child {
+    margin-bottom: 0;
+}
+
+.story-card .highlight {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #8c5360;
+    margin: 30px 0;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.floating-heart,
+.floating-star {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.5;
+}
+
+.floating-heart {
+    color: #d99aa7;
+    font-size: 25px;
+    animation: floatUp 8s linear infinite;
+}
+
+.floating-heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-heart:nth-child(2) {
+    left: 35%;
+    animation-delay: 2s;
+}
+
+.floating-heart:nth-child(3) {
+    left: 70%;
+    animation-delay: 4s;
+}
+
+.floating-heart:nth-child(4) {
+    left: 90%;
+    animation-delay: 6s;
+}
+
+.floating-star {
+    color: #c89ba3;
+    font-size: 18px;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.floating-star:nth-child(5) {
+    top: 20%;
+    left: 20%;
+}
+
+.floating-star:nth-child(6) {
+    top: 35%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.floating-star:nth-child(7) {
+    bottom: 25%;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+    }
+}
+
+@keyframes glow {
+    from {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.5;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateY(-20vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.3);
+    }
+}
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+        letter-spacing: 5px;
+    }
+
+    .story-card {
+        padding: 28px 22px;
+    }
+
+    .story-card p {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 90px 6%;
+    }
+}
+/* =========================
+   HER MEMORIES
+========================= */
+
+.memories-section {
+    background: #fff8f9;
+}
+
+.memories-intro {
+    font-size: 1.25rem;
+    color: #806067;
+    margin-top: -20px;
+    margin-bottom: 45px;
+}
+
+.photo-grid {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.photo-card {
+    background: #fff;
+    padding: 12px 12px 25px;
+    box-shadow: 0 15px 35px rgba(100, 55, 65, 0.12);
+    transform: rotate(-2deg);
+    transition: all 0.4s ease;
+}
+
+.photo-card:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.photo-card:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) rotate(0deg) scale(1.03);
+    box-shadow: 0 25px 45px rgba(100, 55, 65, 0.18);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-card p {
+    font-size: 1.2rem;
+    color: #70464e;
+    margin-top: 18px;
+    font-style: italic;
+}
+
+/* Phone layout */
+@media (max-width: 700px) {
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .photo-card img {
+        height: 420px;
+    }
+}
+/* =========================
+   THINGS I LOVE ABOUT YOU
+========================= */
+
+.love-section {
+    background: linear-gradient(#fffafa, #fff1f4);
+}
+
+.love-intro {
+    font-size: 1.25rem;
+    color: #806067;
+    margin-top: -20px;
+    margin-bottom: 45px;
+}
+
+.love-grid {
+    width: 100%;
+    max-width: 1050px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.love-card {
+    padding: 35px 28px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(190, 140, 150, 0.2);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(100, 55, 65, 0.08);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+}
+
+.love-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(100, 55, 65, 0.15);
+}
+
+.love-icon {
+    display: block;
+    font-size: 2rem;
+    color: #c88796;
+    margin-bottom: 15px;
+}
+
+.love-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #70464e;
+    margin-bottom: 15px;
+}
+
+.love-card p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #765960;
+}
+
+/* Phone layout */
+
+@media (max-width: 800px) {
+
+    .love-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+
+    .love-card {
+        padding: 30px 25px;
+    }
+}
+/* =========================
+   THREE MONTH TIMELINE
+========================= */
+
+.timeline-section {
+    background: #fff8f9;
+}
+
+.timeline-intro {
+    font-size: 1.25rem;
+    color: #806067;
+    margin-top: -20px;
+    margin-bottom: 50px;
+}
+
+.timeline {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.timeline-card {
+    position: relative;
+    padding: 32px 38px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(190, 140, 150, 0.2);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(100, 55, 65, 0.08);
+    text-align: left;
+    transition: all 0.4s ease;
+}
+
+.timeline-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 22px 45px rgba(100, 55, 65, 0.14);
+}
+
+.timeline-date {
+    display: block;
+    color: #b17b84;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.timeline-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #70464e;
+    margin-bottom: 12px;
+}
+
+.timeline-card p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #765960;
+}
+
+/* Phone layout */
+
+@media (max-width: 600px) {
+
+    .timeline-card {
+        padding: 28px 24px;
+    }
+
+    .timeline-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .timeline-card p {
+        font-size: 1.1rem;
+    }
+}
+/* =========================
+   OUR SOUNDTRACK
+========================= */
+
+.music-section {
+    background: linear-gradient(#fff8f9, #fcebed);
+}
+
+.music-intro {
+    font-size: 1.25rem;
+    color: #806067;
+    margin-top: -20px;
+    margin-bottom: 45px;
+}
+
+.music-card {
+    width: min(650px, 90%);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(190, 140, 150, 0.25);
+    border-radius: 28px;
+    box-shadow: 0 20px 55px rgba(100, 55, 65, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+.album-heart {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: #f3d9dd;
+    color: #8c5360;
+    font-size: 30px;
+}
+
+.music-details {
+    flex: 1;
+    text-align: left;
+}
+
+.song-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    color: #613d45;
+}
+
+.artist-name {
+    font-size: 1.05rem;
+    color: #8b6870;
+    margin-top: 3px;
+}
+
+.song-message {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #b17b84;
+    margin-top: 8px;
+}
+
+.play-button {
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: #70464e;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.play-button:hover {
+    background: #8c5360;
+    transform: scale(1.08);
+}
+
+/* Phone layout */
+
+@media (max-width: 600px) {
+
+    .music-card {
+        padding: 22px;
+        gap: 15px;
+    }
+
+    .album-heart {
+        width: 55px;
+        height: 55px;
+        font-size: 25px;
+    }
+
+    .song-title {
+        font-size: 1.3rem;
+    }
+
+    .artist-name {
+        font-size: 0.95rem;
+    }
+}
+/* =========================
+   LOVE LETTER
+========================= */
+
+.letter-section {
+    background: linear-gradient(#fffafa, #fff1f4);
+}
+
+.letter-intro {
+    font-size: 1.25rem;
+    color: #806067;
+    margin-top: -20px;
+    margin-bottom: 45px;
+}
+
+.envelope-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Envelope */
+
+.envelope {
+    width: 360px;
+    height: 240px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+/* The envelope itself */
+
+.envelope-body {
+    position: absolute;
+    inset: 0;
+    background: #f6dfe3;
+    border-radius: 8px;
+    box-shadow: 0 20px 45px rgba(100, 55, 65, 0.15);
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope-body span {
+    font-size: 40px;
+    color: #a96d79;
+}
+
+/* Flap */
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-top: 125px solid #e9c3ca;
+    transform-origin: top;
+    transition: transform 0.8s ease;
+    z-index: 5;
+}
+
+/* Letter */
+
+.letter-paper {
+    position: absolute;
+    width: 320px;
+    height: 300px;
+    left: 20px;
+    bottom: 10px;
+    padding: 28px;
+    background: #fffdfb;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(100, 55, 65, 0.12);
+
+    /* Hidden inside the envelope */
+    transform: translateY(220px);
+
+    transition: transform 0.9s ease;
+    overflow-y: auto;
+
+    z-index: 2;
+}
+
+.letter-paper h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: #70464e;
+    margin-bottom: 22px;
+}
+
+.letter-paper p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #765960;
+    margin-bottom: 17px;
+}
+
+.letter-ending {
+    font-family: 'Playfair Display', serif;
+    color: #8c5360 !important;
+    font-size: 1.15rem !important;
+    margin-top: 25px;
+}
+
+/* Opening animation */
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .letter-paper {
+    transform: translateY(-230px);
+    z-index: 6;
+}
+
+/* Button */
+
+.open-letter-button {
+    font-size: 1.1rem;
+}
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+    .envelope {
+        width: 300px;
+        height: 200px;
+    }
+
+    .envelope-flap {
+        border-left-width: 150px;
+        border-right-width: 150px;
+        border-top-width: 105px;
+    }
+
+    .letter-paper {
+        width: 270px;
+        height: 280px;
+        left: 15px;
+        padding: 24px 20px;
+    }
+
+    .letter-paper p {
+        font-size: 1rem;
+    }
+}
+/* =========================
+   FINAL SURPRISE
+========================= */
+
+.final-section {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 45%, #fff, transparent 30%),
+        linear-gradient(135deg, #fff1f4, #f9e1e6, #fff8f8);
+}
+
+.final-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    padding: 40px 25px;
+    animation: finalFade 2s ease;
+}
+
+.final-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 500;
+    color: #613d45;
+    margin-bottom: 20px;
+}
+
+.final-date {
+    font-size: 1.25rem;
+    letter-spacing: 5px;
+    color: #9a6b73;
+}
+
+.final-divider {
+    margin: 35px 0;
+    font-size: 2rem;
+    color: #c88796;
+}
+
+.final-message {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    color: #70464e;
+    margin-bottom: 8px;
+}
+
+.final-story {
+    max-width: 650px;
+    margin: 40px auto 0;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-style: italic;
+    color: #806067;
+}
+
+.final-love {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #8c5360;
+    margin-top: 45px;
+}
+
+.final-hearts {
+    margin-top: 35px;
+    font-size: 1.5rem;
+    color: #c88796;
+    letter-spacing: 8px;
+    animation: finalHearts 3s ease-in-out infinite;
+}
+
+/* Soft glowing circle */
+
+.final-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 190, 205, 0.2);
+    filter: blur(80px);
+    animation: finalGlow 5s ease-in-out infinite alternate;
+}
+
+/* Animations */
+
+@keyframes finalFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes finalGlow {
+    from {
+        transform: scale(0.85);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+@keyframes finalHearts {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+    .final-content {
+        padding: 30px 20px;
+    }
+
+    .final-story {
+        font-size: 1.1rem;
+    }
+
+    .final-love {
+        font-size: 1.5rem;
+    }
+
+    .final-hearts {
+        letter-spacing: 4px;
+    }
+}
